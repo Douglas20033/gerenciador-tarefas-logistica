@@ -1,4 +1,4 @@
-# tests/test_app.py
+# tests/test_app.pi
 import unittest
 # Importe também a nova função autenticar_usuario do app.py
 from app import saudacao_sistema, adicionar_tarefa, listar_tarefas, autenticar_usuario 
