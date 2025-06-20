@@ -1,6 +1,7 @@
 # tests/test_app.py
 import unittest
-from app import saudacao_sistema, adicionar_tarefa, listar_tarefas
+# Importe também a nova função autenticar_usuario do app.py
+from app import saudacao_sistema, adicionar_tarefa, listar_tarefas, autenticar_usuario 
 
 class TestSistemaTarefas(unittest.TestCase):
 
@@ -27,6 +28,17 @@ class TestSistemaTarefas(unittest.TestCase):
         self.assertIn("- Tarefa A", resultado)
         self.assertIn("- Tarefa B", resultado)
         self.assertNotIn("Nenhuma tarefa cadastrada", resultado)
+        
+    def test_autenticar_usuario_sucesso(self):
+        """Verifica a autenticação com credenciais corretas."""
+        self.assertTrue(autenticar_usuario("admin", "senha123"))
+
+    def test_autenticar_usuario_falha(self):
+        """Verifica a autenticação com credenciais incorretas."""
+        self.assertFalse(autenticar_usuario("admin", "senhaerrada"))
+        self.assertFalse(autenticar_usuario("outro_usuario", "senha123"))
+        self.assertFalse(autenticar_usuario("outro_usuario", "senhaerrada"))
+
 
 if __name__ == '__main__':
     unittest.main()
